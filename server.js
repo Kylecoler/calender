@@ -6,6 +6,7 @@ require('dotenv').config()
 const path = require("path")
 
 const port = process.env.port || 3003
+const secret = process.env.SECRET || "banana"
 
 App.use((err, req, res, next)=>{
     console.log(err)
@@ -16,7 +17,7 @@ App.use((err, req, res, next)=>{
 })
 App.use(express.json())
 App.use('/auth', require('./routes/user_route'))
-App.use('/api', expressJwt({secret: process.env.SECRET}))
+App.use('/api', expressJwt({secret: secret}))
 App.use('/api/calendar', require('./routes/event_routes'))
 App.use(express.static(path.join(__dirname, "client", "build")))
 
