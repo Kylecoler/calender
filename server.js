@@ -5,7 +5,7 @@ const expressJwt = require('express-jwt')
 require('dotenv').config()
 const path = require("path")
 
-const port = process.env.port || 3003
+const port = process.env.PORT || 3003
 const secret = process.env.SECRET || "banana"
 
 App.use((err, req, res, next)=>{
